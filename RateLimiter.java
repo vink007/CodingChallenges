@@ -6,6 +6,21 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class RateLimiter {
 
+    public static void main(String[] args) throws InterruptedException {
+        RateLimiter rateLimiter = new RateLimiter();
+        UUID clientId1 = UUID.randomUUID();
+        UUID clientId2 = UUID.randomUUID();
+        for (int i = 0; i <300; i++) {
+            UUID client = (i % 2) == 0 ? clientId1 : clientId2;
+            System.out.println(String.format("[%d][%s][%d] allowed = %s", i, clientId2, System.currentTimeMillis(), rateLimiter.isAllowed(client)));
+        }
+        Thread.sleep(1000L);
+        for (int i = 0; i <200; i++) {
+            UUID client = (i % 2) == 0 ? clientId1 : clientId2;
+            System.out.println(String.format("[%d][%s][%d] allowed = %s", i, clientId2, System.currentTimeMillis(), rateLimiter.isAllowed(client)));
+        }
+    }
+
     // Caller/ ClienId to hits map
     private Map<UUID, Hits> hits;
 
