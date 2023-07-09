@@ -17,3 +17,12 @@ A simple reader/ writer lock
 $ javac RWLock.java
 $ java RWLock
 ```
+
+## ProducerConsumer 
+A simple Producer/ Consumer 
+
+
+```bash
+$ javac ProducerConsumer.java
+$ java ProducerConsumer
+```
